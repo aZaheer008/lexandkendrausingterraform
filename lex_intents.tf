@@ -73,7 +73,7 @@ resource "aws_lex_intent" "service" {
 }
 
 // read_retrun
-resource "aws_lex_intent" "return" {
+resource "aws_lex_intent" "returnpolicy" {
 
   fulfillment_activity {
     type = local.fulfillment_activity_type
@@ -83,11 +83,11 @@ resource "aws_lex_intent" "return" {
     }
   }
 
-  name = "return"
+  name = "returnpolicy"
 
   sample_utterances = [
     "Do You return",
-    "return"
+    "returnpolicy"
   ]  
 }
 
@@ -108,7 +108,7 @@ resource "aws_lex_intent" "kendraIntent" {
 }
 
 resource "aws_lex_bot_alias" "kendrabotAlias" {
-  bot_name    = "kendra"
+  bot_name    = aws_lex_bot.kendra.name
   name        = "kendrabotAlias"
   bot_version = "$LATEST"
 }

@@ -3,7 +3,7 @@
 const AWS = require('aws-sdk');
 const POLICY_INTENT = 'policy'
 const SERVICE_INTENT = 'service'
-const RETURN_INTENT = 'return'
+const RETURN_INTENT = 'returnpolicy'
 const KENDRA_INTENT = 'kendraIntent'
 
 // Payload that we construct from intent slots
@@ -66,14 +66,16 @@ async function kendra(intentRequest, callback) {
          // Set up the parameters for the query
     const params = {
         // IndexId: process.env.INDEX_ID, // the Kendra index ID
-        IndexId: "indexId", // the Kendra index ID
-        QueryText: intentRequest.inputTranscript, // the query string
+        IndexId: "b9d48501-e953-4a8e-a7e1-3816beceb31b", // the Kendra index ID
+        QueryText: "Do you use organic milk in all your products?", // the query string
         QueryResultTypeFilter: 'ANSWER', // return only answers, not documents
     };
 
+    console.log("--83---inside kendra--",params)
     // Query the Kendra index
         const result1 = await kendra.query(params).promise();
         const result = `This is kendra the response of Your return Question, Yes we return`;
+        console.log("-----------result1-----",result1);
         return result;
     } catch (error) {
         console.log("--83---error--",error)
@@ -100,6 +102,7 @@ async function dispatch(intentRequest, context, callback) {
             break;
         case RETURN_INTENT:
             responseContent = await returnpolicy(intentRequest);
+            break;
         case KENDRA_INTENT:
                 responseContent = await kendra(intentRequest);
             break;
@@ -127,6 +130,8 @@ async function dispatch(intentRequest, context, callback) {
     // your Lambda function should send these back to Amazon Lex in the response
     const sessionAttributes = intentRequest.sessionAttributes;
 
+    console.log("-------responseContent-----",responseContent);
+
     if (source !== 'DialogCodeHook') {
         callback(
             close(
@@ -147,6 +152,7 @@ async function dispatch(intentRequest, context, callback) {
 // Route the incoming request based on intent.
 // The JSON body of the request is provided in the event slot.
 exports.handler = (event, context, callback) => {
+    console.log("-----event-----",event);
     try {
         dispatch(event,
             context,

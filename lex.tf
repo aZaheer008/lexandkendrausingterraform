@@ -23,8 +23,8 @@ resource "aws_lex_bot" "kendra" {
   }
 
   intent {
-    intent_name    = aws_lex_intent.return.name
-    intent_version = aws_lex_intent.return.version
+    intent_name    = aws_lex_intent.returnpolicy.name
+    intent_version = aws_lex_intent.returnpolicy.version
   }
 
   intent {
