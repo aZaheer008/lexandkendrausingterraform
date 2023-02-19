@@ -20,9 +20,11 @@ A backend defines where Terraform stores its state data files. For example, we c
     key    = "main/terraform.tfstate"
     region = "us-east-1"
   }
+```
 
 place this object in terraform object in providers.tf file , Your profile will be like 
 
+```
 terraform {
   required_providers {
     aws = {
