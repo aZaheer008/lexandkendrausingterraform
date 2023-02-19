@@ -65,16 +65,16 @@ async function kendra(intentRequest, callback) {
         const kendra = new AWS.Kendra({apiVersion: '2019-02-03'});
          // Set up the parameters for the query
     const params = {
-        // IndexId: process.env.INDEX_ID, // the Kendra index ID
-        IndexId: "b9d48501-e953-4a8e-a7e1-3816beceb31b", // the Kendra index ID
-        QueryText: "Do you use organic milk in all your products?", // the query string
+        IndexId: process.env.INDEX_ID, // the Kendra index ID
+        // IndexId: "a183c38e-8c2f-4e78-8243-93c10d43d1c4", // the Kendra index ID
+        // QueryText: "The AWS DeepRacer Console", // the query string
+        QueryText: intentRequest.inputTranscript, // the query string
         QueryResultTypeFilter: 'ANSWER', // return only answers, not documents
     };
 
-    console.log("--83---inside kendra--",params)
     // Query the Kendra index
         const result1 = await kendra.query(params).promise();
-        const result = `This is kendra the response of Your return Question, Yes we return`;
+        const result = `This is kendra the response of Kendra function`;
         console.log("-----------result1-----",result1);
         return result;
     } catch (error) {
@@ -129,8 +129,6 @@ async function dispatch(intentRequest, context, callback) {
     // If you want Amazon Lex to include them in the response to the client,
     // your Lambda function should send these back to Amazon Lex in the response
     const sessionAttributes = intentRequest.sessionAttributes;
-
-    console.log("-------responseContent-----",responseContent);
 
     if (source !== 'DialogCodeHook') {
         callback(

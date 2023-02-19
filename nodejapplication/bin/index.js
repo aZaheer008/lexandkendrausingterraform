@@ -12,7 +12,7 @@ try {
   .option("t", { alias: "text", describe: "text", type: "string", demandOption: false })
   .argv;
 
-  console.log("------text-----",options.n);
+  // console.log("------text-----",options.n);
 
   const lex = new LexRuntime(
     { region: "us-east-1" ,
@@ -33,7 +33,7 @@ try {
     if (err) {
       console.log(err, err.stack);
     } else {
-      console.log(data);
+      console.log("Response : ",data.message);
     }
   });
 
