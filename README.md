@@ -40,10 +40,11 @@ terraform {
 provider "aws" {
   region = var.aws_region
 }
-```
 
-# The archive provider will expose resources to manage archive files.
+The archive provider will expose resources to manage archive files.
 provider "archive" {}
+
+```
 
 craete bucket with any unique name , above we used "terraform-state-aws-by-example"
 by using this command You can cereate bucket by terminal
