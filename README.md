@@ -14,7 +14,7 @@ Create environment
 Before moving on to Cloud9, let's talk about Terraform Backend Configuration. We have been maintaining our Terraform state on our local machine. However, this won't scale in a collaborative environment. Instead, we can specify a backend that defines where Terraform stores its state data files.
 
 A backend defines where Terraform stores its state data files. For example, we can change from the default local backend to an s3 backend.
-
+```
   backend "s3" {
     bucket = "terraform-state-aws-by-example"
     key    = "main/terraform.tfstate"
@@ -40,6 +40,7 @@ terraform {
 provider "aws" {
   region = var.aws_region
 }
+```
 
 # The archive provider will expose resources to manage archive files.
 provider "archive" {}
