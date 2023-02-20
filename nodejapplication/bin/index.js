@@ -17,8 +17,8 @@ try {
   const lex = new LexRuntime(
     { region: "us-east-1" ,
     credentials: new AWS.Credentials({
-      accessKeyId: "accessKeyId",         // Add your access IAM accessKeyId
-      secretAccessKey: "secretAccessKey"      // Add your access IAM secretAccessKey
+      accessKeyId: process.env.accessKeyId,         // Add your access IAM accessKeyId
+      secretAccessKey: process.env.secretAccessKey      // Add your access IAM secretAccessKey
     })}
   );
   

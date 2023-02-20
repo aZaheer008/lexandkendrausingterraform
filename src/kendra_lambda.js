@@ -66,7 +66,6 @@ async function kendra(intentRequest, callback) {
          // Set up the parameters for the query
     const params = {
         IndexId: process.env.INDEX_ID, // the Kendra index ID
-        // IndexId: "a183c38e-8c2f-4e78-8243-93c10d43d1c4", // the Kendra index ID
         // QueryText: "The AWS DeepRacer Console", // the query string
         QueryText: intentRequest.inputTranscript, // the query string
         QueryResultTypeFilter: 'ANSWER', // return only answers, not documents

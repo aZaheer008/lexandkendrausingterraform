@@ -98,3 +98,36 @@ Store your permanent AWS access credentials in the environment. This is similar 
 3. Running terraform plan should succeed .
 
 Run terraform apply again, and after accepting the plan, your resources will be created successfully.
+Then You have to get Index Id from Your terminal and set envioremnt variable of INDEX_ID so it will be used in lambda function .
+
+# Run Application
+You have to enter in "nodejapplication" directory and follow the bellow guidlines to execute the BOT.
+1. cd nodejapplication
+  1. Here You also have set Your enviorment variables of aws account.
+    1. accessKeyId
+    2. secretAccessKey
+2. If You want to run the application as nodejs cli run this command from root 
+  ``` npm install -g . ```
+3. Then You have following the below comand to test the bot
+  1.  ``` mycli -n "what is a Policy" ```
+      there are different utterance given below 
+          "what is a Policy",
+          "I would like to read Policy",
+          "Show Policy",
+          "display Policy"
+      The answer of this is ```  `This is the response of Your given ${Your given Policy} Policy `;```;
+  2. ``` mycli -n "Do You return" ```
+      there are different utterance given below 
+           "Do You return",
+            "returnpolicy"
+      The answer of this is ```  `This is the response of Your return Question, Yes we return`;```;
+  3. ``` mycli -n "Do You serve on weekend" ```
+      there are different utterance given below 
+            "Do You serve on weekend",
+            "weekend is open ",
+            "weekend "
+      The answer of this is ```  `This is the response of Your Weekend Question, Yes wee open on  Weekend`;```;
+  4.  1. ``` mycli -n "FAQ" ``` this will work 
+        The answer of this is ```  `This is kendra the response of Kendra function`;```;
+      2. ``` mycli -n "The AWS DeepRacer Vehicle" ``` this is in process didn't understand how to trigger intent on it and display its result while I have got its query result from Kendra .
+
